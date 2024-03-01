@@ -6,8 +6,8 @@ export default function WarningText({ label, value, setValue }) {
   const [editValue, setEditValue] = useState(value);
   return (
     <div>
-      <div className="w-full">
-        <div className="font-bold pb-2 ">{label}</div>
+      <div className="w-full px-4">
+        <div className="font-bold pb-2">{label}</div>
         <input
           className="border-slate-300 border rounded-md px-2"
           onBlur={(e) => {
@@ -17,7 +17,7 @@ export default function WarningText({ label, value, setValue }) {
               return;
             }
             setShowWarning(false);
-            setValue(parseInt(e.target.value));
+            setValue(newValue);
           }}
           value={editValue}
           onChange={(e) => {
@@ -28,7 +28,7 @@ export default function WarningText({ label, value, setValue }) {
         />
       </div>
       {showWarning && (
-        <div className="text-red-500 text-sm">
+        <div className="text-red-500 text-sm text-center">
           {"Enter a value between 3 and 40"}
         </div>
       )}

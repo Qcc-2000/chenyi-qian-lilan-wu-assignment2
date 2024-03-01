@@ -34,7 +34,7 @@ export default function ControlPanel({ stage, setStage }) {
         Reset
       </button>
       <button
-        className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+        className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded w-28"
         onClick={handleAutoRun}
       >
         {autoRun ? "Stop" : "Auto Run"}
