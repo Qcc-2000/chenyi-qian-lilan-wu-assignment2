@@ -7,7 +7,7 @@ import { initializeStage } from "./utils/algo";
 import { StageContext } from "./stageProvider";
 export default function Game() {
   const { cols, rows, setCols, setRows } = useContext(StageContext);
-  const [stage, setStage] = useState(initializeStage(rows, cols));
+  const [stage, setStage] = useState(() => initializeStage(rows, cols));
   useEffect(() => {
     setStage(initializeStage(rows, cols));
   }, [cols, rows]);

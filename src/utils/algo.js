@@ -59,8 +59,6 @@ function countNeighbors(board, i, j) {
  * @param cols number of columns
  */
 export function initializeStage(rows, cols) {
-  console.log("initialize stage");
-  console.log(rows, cols);
   let state = [];
   for (let i = 0; i < rows; i++) {
     let row = [];
@@ -69,5 +67,7 @@ export function initializeStage(rows, cols) {
     }
     state.push(row);
   }
+  console.log("initialize stage");
+  console.log(state);
   return state;
 }
