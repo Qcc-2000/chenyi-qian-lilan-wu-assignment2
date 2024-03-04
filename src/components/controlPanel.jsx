@@ -1,26 +1,17 @@
 /* eslint-disable react/prop-types */
 import { useState, useEffect } from "react";
-import { NextStage, initializeStage } from "../utils/algo";
-export default function ControlPanel({ stage, setStage }) {
-  const [intervalId, setIntervalId] = useState(null);
+export default function ControlPanel({ controlFunc }) {
+  const { getNextStage, resetStage } = controlFunc;
   const [autoRun, setAutoRun] = useState(false);
   useEffect(() => {
+    let intervalId;
     if (autoRun) {
-      const id = setInterval(getNextStage, 100);
-      setIntervalId(id);
-    } else {
-      clearInterval(intervalId);
-      setIntervalId(null);
+      intervalId = setInterval(getNextStage, 100);
     }
-
-    return () => clearInterval(intervalId);
-  }, [autoRun]);
-  const getNextStage = () => {
-    setStage((prev) => [...NextStage(prev)]);
-  };
-  const resetStage = () => {
-    setStage(initializeStage(stage.length, stage[0].length));
-  };
+    return () => {
+      clearInterval(intervalId);
+    };
+  }, [autoRun, getNextStage]);
   const handleAutoRun = () => {
     setAutoRun(!autoRun);
   };

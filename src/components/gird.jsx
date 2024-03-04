@@ -1,12 +1,9 @@
 /* eslint-disable react/prop-types */
 import Cell from "./cell";
 import { GridOptions } from "../utils/constant";
-// import { useContext } from "react";
-// import { StageContext } from "../stageProvider";
 import Toggle from "./toggle";
 
 export default function Grid({ stage, setStage }) {
-  // const { cols, rows } = useContext(StageContext);
   const totalLive = stage.reduce((acc, row) => {
     return acc + row.reduce((acc2, cell) => (cell ? acc2 + 1 : acc2), 0);
   }, 0);
