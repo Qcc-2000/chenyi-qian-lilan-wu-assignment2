@@ -1,9 +1,7 @@
 // eslint-disable-next-line react/prop-types
-export default function Cell({ row, col, stage, setStage, clicked }) {
+export default function Cell({ row, col, clicked, flipCell }) {
   const handleClick = () => {
-    const newStage = [...stage];
-    newStage[row][col] = !stage[row][col];
-    setStage(newStage);
+    flipCell(row, col);
   };
 
   return (
