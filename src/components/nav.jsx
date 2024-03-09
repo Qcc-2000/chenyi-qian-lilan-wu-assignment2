@@ -1,4 +1,5 @@
 import MaxWidth from "./maxWidth";
+import { NavLink, Outlet } from "react-router-dom";
 
 export default function Nav() {
   return (
@@ -10,10 +11,25 @@ export default function Nav() {
               Conway’s Game of Life
             </div>
           </div>
-          <div className="flex items-center gap-3">
-            <div className="text-red-900">Page1</div>
-            <div className="text-red-900">Page2</div>
-            <div className="text-red-900">Page3</div>
+          <div className="flex items-center gap-3 text-lg">
+            <NavLink to="/" className={({ isActive }) => {
+              return isActive ? 'text-red-900 font-bold' : ''
+            }}>
+              Home
+            </NavLink>
+            <Outlet />
+            <NavLink to="/game" className={({ isActive }) => {
+              return isActive ? 'text-red-900 font-bold' : ''
+            }}>
+              Game
+            </NavLink>
+            <Outlet />
+            <NavLink to="/credits" className={({ isActive }) => {
+              return isActive ? 'text-red-900 font-bold' : ''
+            }}>
+              Credits
+              </NavLink>
+            <Outlet />
           </div>
         </div>
       </MaxWidth>

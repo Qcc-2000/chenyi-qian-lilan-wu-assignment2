@@ -3,7 +3,7 @@
  * @param currentStage 2D array representing the current stage
  * @returns 2D array representing the next stage
  */
-export function NextStage(board) {
+export function NextStage(board, generation) {
   const m = board.length;
   const n = board[0].length;
   const newGrid = [];
@@ -11,21 +11,22 @@ export function NextStage(board) {
     const row = [];
     for (let j = 0; j < n; j++) {
       const cnt = countNeighbors(board, i, j);
-      if (board[i][j] === true) {
+      if (board[i][j][0] === true) {
         if (cnt < 2 || cnt > 3) {
-          row.push(false);
+          row.push([false, board[i][j][1]]);
         } else {
-          row.push(true);
+          row.push([true, generation]);
         }
       } else {
         if (cnt === 3) {
-          row.push(true);
+          row.push([true, generation]);
         } else {
-          row.push(false);
+          row.push([false, board[i][j][1]]);
         }
       }
     }
     newGrid.push(row);
+    console.log(newGrid);
   }
   return newGrid;
 }
@@ -43,7 +44,7 @@ function countNeighbors(board, i, j) {
         row < board.length &&
         col < board[i].length
       ) {
-        if (board[row][col] === true) {
+        if (board[row][col][0] === true) {
           count++;
         }
       }
@@ -63,7 +64,12 @@ export function initializeStage(rows, cols) {
   for (let i = 0; i < rows; i++) {
     let row = [];
     for (let j = 0; j < cols; j++) {
-      row.push(Math.random() < 0.05);
+      if (Math.random() < 0.05) {
+        row.push([true, 0]);
+      } else {
+        row.push([false, -1]);
+      }
+      
     }
     state.push(row);
   }

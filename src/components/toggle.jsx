@@ -1,15 +1,14 @@
 import { useState } from "react";
-function Toggle() {
-  // State variable to track the toggle state
-  const [isToggled, setIsToggled] = useState(false);
-
+function Toggle({ isToggled, setIsToggled }) {
   // Function to handle toggle
   const handleToggle = () => {
-    setIsToggled((prevState) => !prevState);
+    setIsToggled(!isToggled);
   };
+  const label = isToggled ? "Turn off the heatmap" : "Turn on the heatmap"
 
   return (
     <div className="flex items-center">
+      <div>{label}</div>
       <button
         onClick={handleToggle}
         className={`relative h-6 w-10  ${
