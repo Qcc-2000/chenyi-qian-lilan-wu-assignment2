@@ -4,11 +4,11 @@ function Toggle({ isToggled, setIsToggled }) {
   const handleToggle = () => {
     setIsToggled(!isToggled);
   };
-  const label = isToggled ? "Turn off the heatmap" : "Turn on the heatmap"
+  const label = isToggled ? "Turn off the heatmap" : "Turn on the heatmap";
 
   return (
     <div className="flex items-center">
-      <div>{label}</div>
+      <div className="hidden lg:block">{label}</div>
       <button
         onClick={handleToggle}
         className={`relative h-6 w-10  ${
